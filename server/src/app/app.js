@@ -1,4 +1,5 @@
 import express from 'express';
+import authRoutes from '../routes/auth.routes.js';
 
 const app = express();
 
@@ -9,6 +10,9 @@ app.use(express.json());
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
+
+// ─── Auth Routes ──────────────────────────────────────────
+app.use('/api/auth', authRoutes);
 
 // ─── Error Handler ────────────────────────────────────────
 app.use((err, req, res, next) => {
